@@ -1,0 +1,1 @@
+<?php json_encode(array("name"=>"Пётр", "manager"=>"Дуриан")); ?>

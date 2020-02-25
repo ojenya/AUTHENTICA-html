@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="utf-8">
+    <title>Authentica Club</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/animate.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+
+    <script>
+        window.onload = function() {
+
+            $("body").fadeIn(2000);
+
+            var url = window.location.search.replace('?', '');
+            var re = /\s*:\s*/;
+            var data = url.split(re);
+            var Arr = new Array();
+            var dataArr = Arr.push(data);
+            var name = document.getElementById('person_name');
+            name.innerHTML = Arr[0][0];
+            var name = document.getElementById('person_manager');
+            name.innerHTML = Arr[0][1];
+        }
+    </script>
+    <div class="container inner-screen">
+        <div class="header-logo">
+            <p>
+                <img src="../img/logo.svg" alt="authentica club">
+            </p>
+        </div>
+        <div class="wrapper-1500">
+            <div class="flex-box">
+                <div class="left-block" data-wow-delay=".1s">
+                    <h2 class="wow fadeInLeft" data-wow-duration="4s">ДОБРО ПОЖАЛОВАТЬ, <span id="person_name" class="blue"></span></h2>
+                    <p class="wow fadeIn" data-wow-delay=".4s" data-wow-duration=".8s">секретный бьюти-клуб <span class="blue">authentica club</span> восхищается красотой этого мира<br> и имеет честь пригласить Вас на мероприятие в честь своего открытия.</p>
+                    <p class="wow fadeIn outline left bottom" data-wow-delay=".4s" data-wow-duration=".8s">Ваш персональный менеджер:<br>
+                        <span id="person_manager" class="blue"></span> — 8 (950) 128 00-00</p>
+                    <p class="wow fadeIn" data-wow-delay=".4s" data-wow-duration=".8s" id="show_message">мы будем очень признательны Вам, если Вы сможете<br> заранее подтвердить своё участие.</p>
+                    <a class="btn-link wow fadeIn" data-wow-delay=".4s" data-wow-duration=".8s" data-visit="невероятно рады вашему решению, с нетерпением ждём<br>Вас на мероприятии" value="yes">я приду</a>
+                    <a class="btn-link wow fadeIn nomrg" data-wow-delay=".4s" data-wow-duration=".8s" data-visit="нам очень жаль, что Вы не сможете прийти" value="no">не смогу</a>
+                </div>
+                <div class="right-block wow fadeIn" data-wow-delay=".8s" data-wow-duration="4s">
+                    <h2>INFO</h2>
+                    <div class="outline outline-left">
+                        <p>10.02.2020 19:00</p>
+                        <p>«Иркутский Драматический театр им. Охлопкова» ул. Карла Маркса 14</p>
+                        <p>dress code — cocktail dress</p>
+                    </div>
+                    <div class="outline outline-bottom">
+                        <a class="social" href="#"><img src="../img/fb.svg"></a>
+                        <a class="social" href="#"><img src="../img/inst.svg"></a>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+    <script src="js/main.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/wow.min.js"></script>
+    <script src="js/maskedinput.min.js"></script>
+
+</body>
+
+</html>

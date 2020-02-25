@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+
+<html lang="ru">
+
+<head>
+    <meta charset="utf-8">
+    <title>Authentica Club</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/animate.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+
+    <div class="container hello-screen">
+        <div class="header-logo wow fadeIn">
+            <p>
+                <img src="../img/logo.svg" alt="authentica club" data-wow-delay="2s" data-wow-duration="4s">
+            </p>
+        </div>
+        <div class="wrapper-1100">
+            <h1 class="wow fadeInLeft" data-wow-delay=".4s" data-wow-duration="4s">КРАСОТА КАК <span class="blue">ИДЕЯ</span></h1>
+            <form class="enter-form" id="login_form" action="localhost:8080/" method="GET">
+                <div class="flex-box">
+                    <p class="wow fadeInLeft" data-wow-delay="4s" data-wow-duration="3s">введите персональный код:</p>
+                    <input class="wow fadeIn" data-wow-delay="4s" data-wow-duration="3s" id="personal_code" type="text" value="" name="personal_code" placeholder="XXXX">
+                </div>
+                <div class="form-row">
+                    <div class="error-message">к сожалению, введёный вами код<br> не зарегистрирован в базе.</div>
+                    <input class="wow fadeIn transition" data-wow-delay="4s" data-wow-duration="3s" id="btn_submit" type="submit" value="далее" disabled>
+                </div>
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <script>
+        window.onload = function() {
+            $("body").css("display", "none");
+
+            $("body").fadeIn(1000);
+
+        }
+        document.querySelector('#btn_submit').addEventListener('click', () => {
+            var value = document.querySelector('#personal_code').value;
+            $(document).ready(function() {
+
+                $.ajax({
+                    type: "GET",
+                    url: "/success.json",
+
+                    success: function(personal_code) {
+                        console.log(value);
+                        for (let ps = 0; ps < personal_code.length; ps++) {
+                            if (personal_code[ps].id == value) {
+                                let person_name = personal_code[ps].name;
+                                let person_manager = personal_code[ps].manager;
+                                let href = 'inner.html?' + person_name + ':' + person_manager;
+                                $("body").fadeOut(1000, redirectPage);
+
+                                function redirectPage() {
+                                    window.location = href;
+                                }
+                                // setTimeout(function() {
+                                //     window.location = href
+                                // }, 1000);
+                            }
+
+                        }
+
+
+
+                    }
+                });
+            });
+        });
+        //     const request = new Request('https://pure-sea-71515.herokuapp.com/data');
+        //     const URL = request.url;
+        //     const method = request.method;
+        //     const credentials = request.credentials;
+        //     console.log(URL);
+        //     console.log(method);
+        //     console.log(credentials);
+
+        //     fetch(request)
+        //         .then(response => {
+        //             console.log(response.status);
+        //             if (response.status === 200) {
+        //                 console.log(response.json());
+        //                 // return response.json();
+
+        //             } else {
+        //                 throw new Error('Something went wrong on api server!');
+        //             }
+        //         })
+
+        // })
+    </script>
+    <script src="js/main.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/wow.min.js"></script>
+    <script src="js/maskedinput.min.js"></script>
+
+</body>
+
+</html>
